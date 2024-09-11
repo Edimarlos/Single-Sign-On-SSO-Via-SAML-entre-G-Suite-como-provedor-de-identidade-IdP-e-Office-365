@@ -1,4 +1,4 @@
-## Comfigurar/Atualizar o SSO(Single Sign-On) do provedor (idP) GSuite via SAML para o Microsoft Office 365.
+## Configurar/Atualizar o SSO(Single Sign-On) do provedor (idP) GSuite via SAML para o Microsoft Office 365.
 
 Partindo do princípio de que você já utiliza o Google Workspace e deseja provisionar esses usuários no Microsoft Office 365, implementando o Single Sign-On (SSO). Dessa forma, os usuários poderão acessar ambas as plataformas com as mesmas credenciais, facilitando o gerenciamento e o acesso.
 
@@ -15,6 +15,9 @@ ___
 4. Na página de detalhes do provedor de identidade do Google, clique em **Continuar**.
    - Marque **Resposta assinada**.
    - Defina o **Formato do código de nome** como "PERSISTENTE".
+
+<img src="/assets/imgs/configGSuiteOffice365.png">
+
 5. No **Mapeamento de atributos**, mapeie os seguintes atributos:
    - **Primary Email** (Google) para **IDPEmail** (Office 365).
 6. (Opcional) No campo de associação ao grupo, pesquise e selecione até 75 grupos conforme necessário.
