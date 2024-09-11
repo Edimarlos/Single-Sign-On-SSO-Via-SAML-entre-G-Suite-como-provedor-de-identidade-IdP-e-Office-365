@@ -1,0 +1,1 @@
+# Logon-nico-SSO-entre-G-Suite-e-Office-365-com-o-G-Suite-como-provedor-de-identidade-IdP-
