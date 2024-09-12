@@ -42,23 +42,22 @@ Mais instruções [aqui](https://support.google.com/a/answer/7365072?sjid=186086
 
 ___
 ####  Configurar o Office 365 com os parâmetros/certificado do GSuite
-```
-   [xml]$idp = Get-Content C:\Path\to\xml\GoogleIDPMetadata-$domainName.xml
 
+12. Excecute o PowerShell como Administrador
+
+
+```
+   Install-Module MSOnline
+   Import-Module MSOnline
+   Connect-MsolService
+   
+   $domainName = "<seu domínio>"
+   [xml]$idp = Get-Content <lotal do arquivo com os metadados o XML>
    $activeLogonUri = "https://login.microsoftonline.com/login.srf"
    $signingCertificate = ($idp.EntityDescriptor.IDPSSODescriptor.KeyDescriptor.KeyInfo.X509Data.X509Certificate | Out-String).Trim()
    $issuerUri = $idp.EntityDescriptor.entityID
    $logOffUri = $idp.EntityDescriptor.IDPSSODescriptor.SingleSignOnService.Location[0]
    $passiveLogOnUri = $idp.EntityDescriptor.IDPSSODescriptor.SingleSignOnService.Location[0]
 
-   Set-MsolDomainAuthentication `
-   -DomainName $domainName `
-   -FederationBrandName $domainName `
-   -Authentication Federated `
-   -PassiveLogOnUri $passiveLogOnUri `
-   -ActiveLogOnUri $activeLogonUri `
-   -SigningCertificate $signingCertificate `
-   -IssuerUri $issuerUri `
-   -LogOffUri $logOffUri `
-   -PreferredAuthenticationProtocol "SAMLP"
+   Set-MsolDomainAuthentication -DomainName $domainName -FederationBrandName $domainName -Authentication Federated -PassiveLogOnUri $passiveLogOnUri -ActiveLogOnUri $activeLogonUri -SigningCertificate $signingcertificate -IssuerUri $issuerUri -LogOffUri $logOffUri -PreferredAuthenticationProtocol "SAMLP"
 ```
