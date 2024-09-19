@@ -40,19 +40,27 @@ ___
 
 Mais instruções [aqui](https://support.google.com/a/answer/7365072?sjid=1860868631779308443-SA#zippy=%2Cconfigurar-o-provisionamento-autom%C3%A1tico-para-o-aplicativo-microsoft-office).
 
+12. Baixe o certificado que contem os metadados necessários para o usar no Office 365 no **Menu > Apps > Apps da Web e para dispositivos móveis > Fazer dowbload do metadados**
+<img src="/assets/imgs/baixarMetadados.png">
+<img src="/assets/imgs/metadadosCertificadoGSuite.png">
 ___
 ####  Configurar o Office 365 com os parâmetros/certificado do GSuite
 
-12. Excecute o PowerShell como Administrador
+12. Excecute o PowerShell como Administrador.
 
-
+13. Instale, importe e conecte usando usuário com perfil de administrador ao Office 365.
 ```
    Install-Module MSOnline
    Import-Module MSOnline
    Connect-MsolService
-   
+```
+14. Crie as seguinte variaveis e coloque o seu domínio e o local onde foi salvo o arquivo com os metadados do certificado baixado no GSuite.
+```   
    $domainName = "<seu domínio>"
-   [xml]$idp = Get-Content <lotal do arquivo com os metadados o XML>
+   [xml]$idp = Get-Content <lotal do arquivo com os metadados o XML>      
+```
+
+```
    $activeLogonUri = "https://login.microsoftonline.com/login.srf"
    $signingCertificate = ($idp.EntityDescriptor.IDPSSODescriptor.KeyDescriptor.KeyInfo.X509Data.X509Certificate | Out-String).Trim()
    $issuerUri = $idp.EntityDescriptor.entityID
