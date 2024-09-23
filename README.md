@@ -24,6 +24,7 @@ ___
 Mais instruções [aqui](https://support.google.com/a/answer/6363817?hl=pt-BR&sjid=1860868631779308443-SA#zippy=%2Cstep-configure-immutableid%2Cstep-set-up-google-as-a-saml-identity-provider-idp%2Cantes-de-come%C3%A7ar%2Cetapa-configurar-o-immutableid%2Cetapa-receber-informa%C3%A7%C3%B5es-do-provedor-de-identidade-idp-do-google%2Cetapa-configurar-o-google-como-provedor-de-identidade-idp-saml).
 
 ___
+
 #### Configurar o provisionamento automático para Office 365
 
 6. Na seção **Provisionamento automático**, clique em **Configurar provisionamento automático** e depois em **Autorizar**.
@@ -58,14 +59,44 @@ ___
 ```   
    $domainName = "<seu domínio>"
    [xml]$idp = Get-Content <lotal do arquivo com os metadados o XML>      
-```
 
-```
    $activeLogonUri = "https://login.microsoftonline.com/login.srf"
    $signingCertificate = ($idp.EntityDescriptor.IDPSSODescriptor.KeyDescriptor.KeyInfo.X509Data.X509Certificate | Out-String).Trim()
    $issuerUri = $idp.EntityDescriptor.entityID
    $logOffUri = $idp.EntityDescriptor.IDPSSODescriptor.SingleSignOnService.Location[0]
    $passiveLogOnUri = $idp.EntityDescriptor.IDPSSODescriptor.SingleSignOnService.Location[0]
+```
 
+15. Agora finalize definindo o domínio como federado
+```
    Set-MsolDomainAuthentication -DomainName $domainName -FederationBrandName $domainName -Authentication Federated -PassiveLogOnUri $passiveLogOnUri -ActiveLogOnUri $activeLogonUri -SigningCertificate $signingcertificate -IssuerUri $issuerUri -LogOffUri $logOffUri -PreferredAuthenticationProtocol "SAMLP"
+```
+
+15. Para testar volte no GSuite, acesse: **Menu > Apps > Apps da Web e para dispositivos móveis > Selecione o Office 365 > Clique em Testar login SAML.**
+
+## Atualizando certificado quando estiver vencido
+> **Nota:** O certificado tem um vencimento logo, mas quando vencer basta seguir os seguinte passo:
+
+1. Faça login no GSuite usando uma conta com privilégios de superadministrador e acesse: **Menu > Apps > Apps da Web e para dispositivos móveis > Selecione o Office 365 > Detalhes do provedor de serviços > Certificado.** 
+
+2. Selecione o novo certificado (caso necessário gere um novo) e após salvar baixe o certificado que contem os metadados necessários para o usar no Office 365.
+<img src="/assets/imgs/atualizarCertificado.png">
+
+3. Excecute o PowerShell como Administrador e rode os comandos dos passos 13 e 14 anteriores da configuração anterior. 
+
+4. Agora finalize atualizando os dados
+```   
+   Set-MsolDomainFederationSettings -DomainName $domainName -FederationBrandName $domainName -PassiveLogOnUri $passiveLogOnUri -ActiveLogOnUri $activeLogonUri -SigningCertificate $signingcertificate -NextSigningCertificate $signingcertificate -IssuerUri $issuerUri -LogOffUri $logOffUri -PreferredAuthenticationProtocol "SAMLP"
+```
+
+####  Comandos úteis
+
+Para verificar qual é sua autenticação atual
+```   
+   Get-MsolDomainFederationSettings -DomainName "{seu domínio}" | Format-List *
+```
+
+Listar usuários do domímio
+```   
+   Get-MsolUser -DomainName "{seu domínio}"
 ```
