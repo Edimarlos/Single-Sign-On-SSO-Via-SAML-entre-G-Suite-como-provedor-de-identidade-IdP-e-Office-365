@@ -43,7 +43,7 @@ Mais instruções [clique aqui](https://support.google.com/a/answer/7365072?sjid
 
 12. Baixe o certificado que contem os metadados necessários para o usar no Office 365 no **Menu > Apps > Apps da Web e para dispositivos móveis > Selecione o Office 365> Fazer dowbload do metadados**
 <img src="/assets/imgs/baixarMetadados.png">
-<img src="/assets/imgs/metadadosCertificadoGoogle Workspace.png">
+<img src="/assets/imgs/metadadosCertificadoGSuite.png">
 ___
 
 ####  Configurar o Office 365 com os parâmetros/certificado do Google Workspace
