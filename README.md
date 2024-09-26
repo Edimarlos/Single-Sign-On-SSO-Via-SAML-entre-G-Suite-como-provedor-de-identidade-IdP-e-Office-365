@@ -17,7 +17,7 @@ ___
    - Marque **Resposta assinada**.
    - Defina o **Formato do código de nome** como "PERSISTENTE".
 
-<img src="/assets/imgs/configGoogle WorkspaceOffice365.png">
+<img src="/assets/imgs/configGSuiteOffice365.png">
 
 5. No **Mapeamento de atributos**, mapeie os seguintes atributos:
    - **Primary Email** (Google) para **IDPEmail** (Office 365).
@@ -33,7 +33,7 @@ ___
    > **Nota:** Se a senha do administrador do Office 365 mudar, será necessário reautorizar.
 8. Verifique se os atributos obrigatórios do Office 365 estão mapeados corretamente. Ajuste conforme necessário.
 
-<img src="/assets/imgs/mapeamentoGoogle WorkspaceOffice365.png">
+<img src="/assets/imgs/mapeamentoGSuiteOffice365.png">
 
 9. (Opcional) Restrinja o provisionamento a grupos específicos pesquisando e adicionando grupos.
 10. Defina o período de adiamento para desprovisionamento e as ações a serem tomadas (suspender ou excluir a conta) após o prazo estabelecido.
@@ -45,6 +45,7 @@ Mais instruções [clique aqui](https://support.google.com/a/answer/7365072?sjid
 <img src="/assets/imgs/baixarMetadados.png">
 <img src="/assets/imgs/metadadosCertificadoGoogle Workspace.png">
 ___
+
 ####  Configurar o Office 365 com os parâmetros/certificado do Google Workspace
 
 13. Excecute o PowerShell como Administrador.
@@ -106,8 +107,8 @@ Listar Usuários do Domínio:
 ___
 
 ##### Referências:
-https://medium.com/@james.winegar/how-to-single-sign-on-sso-between-g-suite-and-office-365-with-g-suite-as-identity-provider-idp-5bf5031835a0
+###### https://medium.com/@james.winegar/how-to-single-sign-on-sso-between-g-suite-and-office-365-with-g-suite-as-identity-provider-idp-5bf5031835a0
 
-https://support.google.com/a/answer/6363817?hl=pt-BR&sjid=1860868631779308443-SA#zippy=%2Cstep-configure-immutableid%2Cstep-set-up-google-as-a-saml-identity-provider-idp%2Cantes-de-come%C3%A7ar%2Cetapa-configurar-o-immutableid%2Cetapa-receber-informa%C3%A7%C3%B5es-do-provedor-de-identidade-idp-do-google%2Cetapa-configurar-o-google-como-provedor-de-identidade-idp-saml
+###### https://support.google.com/a/answer/6363817?hl=pt-BR&sjid=1860868631779308443-SA#zippy=%2Cstep-configure-immutableid%2Cstep-set-up-google-as-a-saml-identity-provider-idp%2Cantes-de-come%C3%A7ar%2Cetapa-configurar-o-immutableid%2Cetapa-receber-informa%C3%A7%C3%B5es-do-provedor-de-identidade-idp-do-google%2Cetapa-configurar-o-google-como-provedor-de-identidade-idp-saml
 
-https://github.com/IAmFrench/GSuite-as-identity-Provider-IdP-for-Office-365-or-Azure-Active-Directory
+###### https://github.com/IAmFrench/GSuite-as-identity-Provider-IdP-for-Office-365-or-Azure-Active-Directory
