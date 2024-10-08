@@ -4,12 +4,12 @@ Partindo do princípio de que você já utiliza o Google Workspace e deseja prov
 
 > **Nota:** Caso deseje somente atualizar o certificado que venceu [clique aqui](#atualizando-certificado-quando-estiver-vencido).
 
-#### Antes de começar
+#### Antes de começar.
 - Adicione seu domínio do Google Workspace ao Microsoft Office 365. Mais instruções [clique aqui](https://learn.microsoft.com/pt-br/microsoft-365/admin/setup/add-domain?view=o365-worldwide).
 - Faça login not Google Workspace usando uma conta com privilégios de superadministrador. 
 
 ___
-#### Primeiro adicione o Microsoft Office 365 no Google Workspace
+#### Primeiro adicione o Microsoft Office 365 no Google Workspace.
 1. No Google Admin Console, acesse **Menu > Apps > Apps da Web e para dispositivos móveis**.
 2. Clique em **Adicionar app** e depois em **Pesquisar apps**.
 3. Pesquise por **Office 365** e selecione o app **SAML Office 365**.
@@ -22,18 +22,20 @@ ___
 5. No **Mapeamento de atributos**, mapeie os seguintes atributos:
    - **Primary Email** (Google) para **IDPEmail** (Office 365).
 
+<img src="/assets/imgs/mapeamentoGSuiteOffice365.png">
+
 Mais instruções [clique aqui](https://support.google.com/a/answer/6363817?hl=pt-BR&sjid=1860868631779308443-SA#zippy=%2Cstep-configure-immutableid%2Cstep-set-up-google-as-a-saml-identity-provider-idp%2Cantes-de-come%C3%A7ar%2Cetapa-configurar-o-immutableid%2Cetapa-receber-informa%C3%A7%C3%B5es-do-provedor-de-identidade-idp-do-google%2Cetapa-configurar-o-google-como-provedor-de-identidade-idp-saml).
 
 ___
 
-#### Configurar o provisionamento automático para Office 365
+#### Configurar o provisionamento automático para Office 365.
 
 6. Na seção **Provisionamento automático**, clique em **Configurar provisionamento automático** e depois em **Autorizar**.
 7. Faça login na sua conta de administrador do Office 365, se necessário.
    > **Nota:** Se a senha do administrador do Office 365 mudar, será necessário reautorizar.
-8. Verifique se os atributos obrigatórios do Office 365 estão mapeados corretamente. Ajuste conforme necessário.
+8. Verifique se os atributos obrigatórios do Office 365 estão mapeados corretamente. Ajuste conforme imagem a seguir:
 
-<img src="/assets/imgs/mapeamentoGSuiteOffice365.png">
+<img src="/assets/imgs/provisionamentoAtributos.png">
 
 9. (Opcional) Restrinja o provisionamento a grupos específicos pesquisando e adicionando grupos.
 10. Defina o período de adiamento para desprovisionamento e as ações a serem tomadas (suspender ou excluir a conta) após o prazo estabelecido.
@@ -75,6 +77,7 @@ ___
 
 17. Para testar, volte no Google Workspace, acesse: **Menu > Apps > Apps da Web e para dispositivos móveis > Selecione o Office 365 > Clique em Testar login SAML.**
 
+18. Libere o recurso para os demais usuários em: **Apps > Apps da Web e para dispositivos móveis > Microsoft Office 365 > Status do serviço: Ative para todos.** 
 ___
 
 ## Atualizando Certificado Quando Estiver Vencido
@@ -107,8 +110,11 @@ Listar Usuários do Domínio:
 ___
 
 ##### Referências:
+
 ###### https://medium.com/@james.winegar/how-to-single-sign-on-sso-between-g-suite-and-office-365-with-g-suite-as-identity-provider-idp-5bf5031835a0
 
 ###### https://support.google.com/a/answer/6363817?hl=pt-BR&sjid=1860868631779308443-SA#zippy=%2Cstep-configure-immutableid%2Cstep-set-up-google-as-a-saml-identity-provider-idp%2Cantes-de-come%C3%A7ar%2Cetapa-configurar-o-immutableid%2Cetapa-receber-informa%C3%A7%C3%B5es-do-provedor-de-identidade-idp-do-google%2Cetapa-configurar-o-google-como-provedor-de-identidade-idp-saml
 
 ###### https://github.com/IAmFrench/GSuite-as-identity-Provider-IdP-for-Office-365-or-Azure-Active-Directory
+
+###### https://www.youtube.com/watch?v=C46djGWiaDA&t=1075s
